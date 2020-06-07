@@ -42,7 +42,7 @@ void test_linked_list() {
 
    TEST_BEGIN(linked_list::insert);
    list.insert(4, 3);      // 1, 2, 3, 4, 5
-   TEST_CASE(list.size() == 4);
+   TEST_CASE(list.size() == 5);
    TEST_CASE(list.at(2) == 3);
    TEST_CASE(list.at(3) == 4);
    TEST_CASE(list.at(4) == 5);
