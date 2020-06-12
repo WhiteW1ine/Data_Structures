@@ -88,13 +88,25 @@ void linked_list::pop_front()
     node* current = new node;
     current = head_;
     head_ = current->next_;
-    current = nullptr;
     delete current;
     count_--;
 }
 
-void linked_list::pop_back() {
-
+void linked_list::pop_back() 
+{
+    node* current = new node;
+    node* previous = new node;
+    current = head_;
+    while (current->next_ != nullptr)
+    {
+        previous = current;
+        current = current->next_;
+    }
+    previous->next_ = nullptr;
+    tail_ = previous;
+    delete current;
+    count_--;
+    
 }
 
 void linked_list::remove(int index) 
@@ -108,19 +120,28 @@ void linked_list::remove(int index)
         current = current->next_;   
     }
     previous->next_ = current->next_;
-    current = nullptr;
     delete current;
     count_--;
 
 
-    //if (previous->next_ == nullptr)
-    //{
-    //    pop_front();
-    //}
+
 }
 
-void linked_list::clear() {
-
+void linked_list::clear() 
+{
+    node* current = new node;
+    node* previous = new node;
+    current = head_;
+    while (current->next_ != nullptr)
+    {
+        previous = current;
+        current = current->next_;
+        delete previous;
+        count_--;
+    }
+    delete current;
+    count_--;
+    
 }
 
 int linked_list::size() const {

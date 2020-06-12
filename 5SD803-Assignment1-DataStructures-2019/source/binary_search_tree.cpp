@@ -26,8 +26,13 @@ binary_search_tree::~binary_search_tree()
 {
 }
 
-void binary_search_tree::insert(int value) {
-
+void binary_search_tree::insert(int value) 
+{
+    node* new_node = new node;
+    if (root_ == nullptr)
+    {
+        root_ = new_node;
+    }
 }
 
 void binary_search_tree::remove(int value) {
