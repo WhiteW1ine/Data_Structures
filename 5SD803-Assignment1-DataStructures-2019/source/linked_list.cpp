@@ -140,6 +140,8 @@ void linked_list::clear()
         count_--;
     }
     delete current;
+    head_ = nullptr;
+    tail_ = nullptr;
     count_--;
     
 }

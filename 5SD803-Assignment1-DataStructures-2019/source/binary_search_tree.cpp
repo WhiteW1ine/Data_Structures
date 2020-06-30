@@ -28,10 +28,42 @@ binary_search_tree::~binary_search_tree()
 
 void binary_search_tree::insert(int value) 
 {
-    node* new_node = new node;
+    node* new_node = new node(value, nullptr, nullptr);
+
     if (root_ == nullptr)
     {
         root_ = new_node;
+        count_++;
+    }
+    else 
+    {
+        node* current = nullptr;
+        node* previous = nullptr;
+        current = root_;
+        previous = current;
+        while (current != nullptr)
+        {
+            previous = current;
+            if (new_node->value_ < current->value_)
+            {
+                current = current->lhs_;
+            }
+            else if (new_node->value_ > current->value_)
+            {
+                current = current->rhs_;
+            }
+        }
+
+        if (new_node->value_ < previous->value_)
+        {
+            previous->lhs_ = new_node;
+            count_++;
+        }
+        else if (new_node->value_ > previous->value_)
+        {
+            previous->rhs_ = new_node;
+            count_++;
+        }
     }
 }
 
@@ -47,8 +79,26 @@ int binary_search_tree::size() const {
    return count_;
 }
 
-bool binary_search_tree::contains(int value) {
-   return false;
+bool binary_search_tree::contains(int value) 
+{
+    node* new_node = new node(value, nullptr, nullptr);
+
+    while (root_ != nullptr)
+    {
+        if (new_node->value_ < root_->value_)
+        {
+            root_ = root_->lhs_;
+        }
+        else if (new_node->value_ > root_->value_)
+        {
+            root_ = root_->rhs_;
+        }
+        else if (new_node->value_ == root_->value_)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void binary_search_tree::depth_first(linked_list &list, const depth_first_algorithm algorithm) {
@@ -59,7 +109,8 @@ void binary_search_tree::depth_first(linked_list &list, const depth_first_algori
       } break;
       case binary_search_tree::IN_ORDER:
       {
-
+          IN_ORDER;
+          IN_ORDER;
       } break;
       case binary_search_tree::POST_ORDER:
       {
@@ -68,6 +119,7 @@ void binary_search_tree::depth_first(linked_list &list, const depth_first_algori
    }
 }
 
-void binary_search_tree::breath_first(linked_list &list) {
+void binary_search_tree::breath_first(linked_list &list) 
+{
 
 }

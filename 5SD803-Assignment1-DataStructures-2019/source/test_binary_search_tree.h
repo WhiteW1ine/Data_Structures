@@ -16,7 +16,7 @@ void test_binary_search_tree() {
    TEST_BEGIN(binary_search_tree::insert);
    tree.insert(10);
    TEST_CASE(tree.size() == 1);
-   TEST_CASE(tree.contains(5));
+   TEST_CASE(tree.contains(10));
    tree.insert(5);
    TEST_CASE(tree.size() == 2);
    TEST_CASE(tree.contains(5));
@@ -39,7 +39,8 @@ void test_binary_search_tree() {
       linked_list list;
       tree.depth_first(list, binary_search_tree::IN_ORDER);
       int count = tree.size();
-      for (int index = 0; index < count; index++) {
+      for (int index = 0; index < count; index++) 
+      {
          TEST_CASE(list.at(index) == in_order[index]);
       }
    }

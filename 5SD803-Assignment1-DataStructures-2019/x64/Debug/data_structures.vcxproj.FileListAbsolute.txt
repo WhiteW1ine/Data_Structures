@@ -1,0 +1,2 @@
+C:\Users\Ratmir\Desktop\Работа Ратмир\Data_Stractures\5SD803-Assignment1-DataStructures-2019\x64\Debug\data_structures.exe
+C:\Users\Ratmir\Desktop\Работа Ратмир\Data_Stractures\5SD803-Assignment1-DataStructures-2019\x64\Debug\data_structures.pdb
