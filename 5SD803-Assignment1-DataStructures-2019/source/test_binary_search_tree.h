@@ -6,7 +6,8 @@
 #include "unit_test.hpp"
 #include "binary_search_tree.h"
 
-void test_binary_search_tree() {
+void test_binary_search_tree() 
+{
    binary_search_tree tree;
 
    TEST_BEGIN(binary_search_tree::size);
@@ -90,12 +91,14 @@ void test_binary_search_tree() {
    }
    TEST_END();
 
+   tree.clear();
+
    TEST_BEGIN(binary_search_tree::depth_first::POST_ORDER);
    {
       const int elements[] = { 10, 5, 3, 2, 4, 7, 15, 13, 17, 16, 20 };
       const int count = sizeof(elements) / sizeof(elements[0]);
       for (int index = 0; index < count; index++) {
-         tree.insert( elements[index] );
+         tree.insert(elements[index]);
       }
 
       const int post_order[] = { 2, 4, 3, 7, 5, 13, 16, 20, 17, 15, 10 };
@@ -106,6 +109,27 @@ void test_binary_search_tree() {
       }
    }
    TEST_END();
+
+   tree.clear();
+
+
+   TEST_BEGIN(binary_search_tree::breath_first);
+   {
+       const int elements[] = { 10, 5, 3, 2, 4, 7, 15, 13, 17, 16, 20 };
+       const int count = sizeof(elements) / sizeof(elements[0]);
+       for (int index = 0; index < count; index++) {
+           tree.insert(elements[index]);
+       }
+
+       const int breath_first[] = { 10, 5, 15, 3, 7, 13, 17, 2, 4, 16, 20 };
+       linked_list list;
+       tree.breath_first(list);
+       for (int index = 0; index < count; index++) {
+           TEST_CASE(list.at(index) == breath_first[index]);
+       }
+   }
+   TEST_END();
 }
+
 
 #endif // !TEST_BINARY_SEARCH_TREE_H_INCLUDED

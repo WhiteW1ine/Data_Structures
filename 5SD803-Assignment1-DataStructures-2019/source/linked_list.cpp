@@ -31,6 +31,7 @@ void linked_list::push_front(int value)
     if (head_ == nullptr)
     {
         head_ = new_node;
+        tail_ = new_node;
         count_++;
     }
     else if (head_ != nullptr)
@@ -52,6 +53,7 @@ void linked_list::push_back(int value)
     if (head_ == nullptr)
     {
         head_ = new_node;
+        tail_ = new_node;
         count_++;
     }
     else

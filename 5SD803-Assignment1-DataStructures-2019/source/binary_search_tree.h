@@ -41,6 +41,10 @@ private:
       node *rhs_; // rhs -> right-hand side
    };
 
+   void in_order(linked_list& list, node* parent);
+   void pre_order(linked_list& list, node* parent);
+   void post_order(linked_list& list, node* parent);
+
    int count_;
    node *root_;
 };
